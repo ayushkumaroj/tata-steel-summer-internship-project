@@ -14,7 +14,7 @@ app.use(express.urlencoded({ extended: true, limit: "1mb" }));
 app.use(express.json({ limit: "1mb" }));
 
 
-app.use('/api/v1',VerifySignature, router);
+app.use('/api/v1', router);
 
 
 const PORT = process.env.PORT || 3000;

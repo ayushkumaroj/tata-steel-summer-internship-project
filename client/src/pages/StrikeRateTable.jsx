@@ -39,7 +39,9 @@ function StrikeRateTable() {
     await createStrikeRate(location, addRow);
     setIsAdd(false);
   };
-
+  useEffect(()=>{
+    getStrikeRate(location)
+  },[])
  
   if (isAdd) {
     return (

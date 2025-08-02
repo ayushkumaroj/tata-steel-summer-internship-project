@@ -5,18 +5,17 @@ import {
   MumbaiQueueTimeModel
 } from '../models/location.js';
 
-const REQUIRED_FIELDS = ['SITE_ID', 'TDC', 'OPERATION', 'QUALITY_CODE', 'RUNRATE', 'SEC1_MAX', 'SEC1_MIN', 'SEC2_MAX', 'SEC2_MIN'];
 
 // Helper to get model based on location
 const getModel = (location) => {
   switch (location) {
-    case "Jamsedpur":
+    case "jamsedpur":
       return JamsedpurQueueTimeModel;
-    case "Kolkata":
+    case "kolkata":
       return KolkataQueueTimeModel;
-    case "Mumbai":
+    case "mumbai":
       return MumbaiQueueTimeModel;
-    case "Odisha":
+    case "odisha":
       return OdishaQueueTimeModel;
     default:
       return null;
@@ -27,10 +26,7 @@ const createQueueTime = async (req, res) => {
   const location = req.params.location;
   const data = req.body;
 
-  const missingFields = REQUIRED_FIELDS.filter(field => !data[field]);
-  if (missingFields.length > 0) {
-    return res.status(400).json({ message: `Missing required fields: ${missingFields.join(', ')}` });
-  }
+
 
   const Model = getModel(location);
   if (!Model) return res.status(400).json({ message: "Invalid location" });

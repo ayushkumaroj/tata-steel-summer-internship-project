@@ -5,18 +5,17 @@ import {
   JamsedpurYieldModel
 } from '../models/location.js';
 
-const REQUIRED_FIELDS = ['SITE_ID', 'TDC', 'OPERATION', 'QUALITY_CODE', 'YIELD'];
 
 // Helper: pick model based on location
 const getYieldModel = (location) => {
   switch (location) {
-    case 'Mumbai':
+    case 'mumbai':
       return MumbaiYieldModel;
-    case 'Kolkata':
+    case 'kolkata':
       return KolkataYieldModel;
-    case 'Odisha':
+    case 'odisha':
       return OdishaYieldModel;
-    case 'Jamsedpur':
+    case 'jamsedpur':
       return JamsedpurYieldModel;
     default:
       return null;
@@ -28,10 +27,6 @@ const createYield = async (req, res) => {
   const location = req.params.location;
   const data = req.body;
 
-  const missing = REQUIRED_FIELDS.filter(field => !data[field]);
-  if (missing.length > 0) {
-    return res.status(400).json({ message: `Missing fields: ${missing.join(', ')}` });
-  }
 
   const Model = getYieldModel(location);
   if (!Model) return res.status(400).json({ message: 'Invalid location' });

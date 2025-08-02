@@ -5,17 +5,16 @@ import {
   OdishaStrikRateModel
 } from '../models/location.js';
 
-const REQUIRED_FIELDS = ['SITE_ID', 'TDC', 'OPERATION', 'QUALITY_CODE', 'STRIKE_RATE'];
 
 const getStrikeRateModel = (location) => {
   switch (location) {
-    case 'Jamsedpur':
+    case 'jamsedpur':
       return JamsedpurStrikRateModel;
-    case 'Mumbai':
+    case 'mumbai':
       return MumbaiStrikRateModel;
-    case 'Kolkata':
+    case 'kolkata':
       return KolkataStrikRateModel;
-    case 'Odisha':
+    case 'odisha':
       return OdishaStrikRateModel;
     default:
       return null;
@@ -27,10 +26,7 @@ const createStrikeRate = async (req, res) => {
   const location = req.params.location;
   const data = req.body;
 
-  const missingFields = REQUIRED_FIELDS.filter(field => !data[field]);
-  if (missingFields.length > 0) {
-    return res.status(400).json({ message: `Missing fields: ${missingFields.join(', ')}` });
-  }
+  
 
   const Model = getStrikeRateModel(location);
   if (!Model) return res.status(400).json({ message: 'Invalid location' });

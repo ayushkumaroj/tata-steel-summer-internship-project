@@ -5,18 +5,16 @@ import {
   MumbaiRunRateModel // you had typo: used `MumbaiQueueTimeModel` before
 } from "../models/location.js";
 
-const REQUIRED_FIELDS = ['SITE_ID', 'TDC', 'OPERATION', 'QUALITY_CODE', 'RUNRATE'];
-
 // Helper function
 const getRunRateModel = (location) => {
   switch (location) {
-    case "Jamsedpur":
+    case "jamsedpur":
       return JamsedpurRunRateModel;
-    case "Kolkata":
+    case "kolkata":
       return KolkataRunRateModel;
-    case "Odisha":
+    case "odisha":
       return OdishaRunRateModel;
-    case "Mumbai":
+    case "mumbai":
       return MumbaiRunRateModel;
     default:
       return null;
@@ -28,10 +26,7 @@ const createRunRate = async (req, res) => {
   const location = req.params.location;
   const data = req.body;
 
-  const missingFields = REQUIRED_FIELDS.filter(field => !data[field]);
-  if (missingFields.length > 0) {
-    return res.status(400).json({ message: `Missing fields: ${missingFields.join(', ')}` });
-  }
+ 
 
   const Model = getRunRateModel(location);
   if (!Model) return res.status(400).json({ message: "Invalid location" });

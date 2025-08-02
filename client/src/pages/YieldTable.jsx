@@ -39,7 +39,9 @@ function YieldTable() {
     setIsUpdate(false);
   };
 
- 
+  useEffect(()=>{
+    getYield(location)
+  },[])
 
   if (isAdd) {
     return (

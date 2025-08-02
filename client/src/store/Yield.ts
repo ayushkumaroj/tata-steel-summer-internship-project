@@ -22,8 +22,10 @@ export const useYield = create<IYield>((set, get) => ({
   data: [],
 
   createYield: async (location, data) => {
+   
     try {
       const response = await AxiosInstance.post<Yield>(`/yield/${location}`, data);
+      console.log(response)
       let CurrentData = get().data as Yield[];
       CurrentData.push(response?.data);
       set({ data: CurrentData });

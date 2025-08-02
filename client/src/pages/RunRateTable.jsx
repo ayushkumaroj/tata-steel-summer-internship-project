@@ -39,7 +39,9 @@ function RunRateTable() {
     setIsAdd(false);
   };
   
-  
+  useEffect(()=>{
+    getRunRate(location)
+  },[])
   if (isAdd) {
     return (
       <AddRunRate

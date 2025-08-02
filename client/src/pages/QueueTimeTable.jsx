@@ -41,9 +41,9 @@ function QueueTimeTable() {
     await createQueueTime(location, addRow);
     setIsAdd(false);
   };
-
-
-
+  useEffect(()=>{
+    getQueueTime(location)
+  },[])
   if (isAdd) {
     return (
       <AddQueueTime
