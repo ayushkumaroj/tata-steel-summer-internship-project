@@ -60,13 +60,13 @@ This application enables Tata Steel teams to:
 
 ## Features
 
-✔ Plant Location Selection  
-✔ KPI Dashboard (Strikerate, Yield, Runrate, Queuetime)  
-✔ Large Table Rendering with Search & Multi-Filter  
-✔ Pagination (10, 25, 50, 100 rows per page)  
-✔ CRUD Operations: Add, Edit, Delete  
-✔ Responsive UI (Desktop & Mobile)  
-✔ REST API for data handling (Node + Express)  
+- Plant Location Selection  
+- KPI Dashboard (Strikerate, Yield, Runrate, Queuetime)  
+- Large Table Rendering with Search & Multi-Filter  
+- Pagination (10, 25, 50, 100 rows per page)  
+- CRUD Operations: Add, Edit, Delete  
+- Responsive UI (Desktop & Mobile)  
+- REST API for data handling (Node + Express)  
 
 ---
 
